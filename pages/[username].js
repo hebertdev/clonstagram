@@ -11,9 +11,11 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 
 import { toggleFollow } from "../Helpers/user-helpers";
 
-export default function User({ usuario, logout }) {
+export default function User(props, { usuario, logout }) {
   const router = useRouter();
   const { username } = router.query;
+
+  console.log(props.user.username);
 
   const [userProfile, setUserProfile] = useState(null);
   const [cargandoPerfil, setCargandoPerfil] = useState(true);
@@ -23,7 +25,7 @@ export default function User({ usuario, logout }) {
       try {
         setCargandoPerfil(true);
         const { data: profile } = await axiosInstance.get(
-          `/users/${username}/`
+          `/users/${props.user.username}/`
         );
 
         setUserProfile(profile);
@@ -36,7 +38,7 @@ export default function User({ usuario, logout }) {
     }
 
     CargarPostsYUsuario();
-  }, [username]);
+  }, [props.user.username]);
 
   async function onSubmitFollowToggle() {
     try {
@@ -54,7 +56,7 @@ export default function User({ usuario, logout }) {
       <div className="container-all-profile">
         {/* parte de la informacion de perfil */}
 
-        {usuario && userProfile && (
+        {userProfile && (
           <ProfileSectionBio
             userProfile={userProfile}
             usuario={usuario}
@@ -76,9 +78,11 @@ export default function User({ usuario, logout }) {
 }
 
 User.getInitialProps = async (ctx) => {
-  console.log(ctx.query.username);
+  let usernamesito = {
+    username: ctx.query.username,
+  };
 
-  return <p> {ctx.query.username} </p>;
+  return { user: usernamesito };
 };
 
 function ProfileSectionBio({
