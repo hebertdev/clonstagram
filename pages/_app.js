@@ -7,6 +7,7 @@ import "../styles/UploadImage.css";
 import "../styles/profile.css";
 import "../styles/post_detail.css";
 import "../styles/edit_profile.css";
+import "../styles/login.css";
 
 import Nav from "../components/Nav/index";
 import FooterNavigation from "../components/FooterNavigation/index";

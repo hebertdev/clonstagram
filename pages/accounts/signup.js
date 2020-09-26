@@ -104,7 +104,7 @@ export default function Signup({ signup, mostrarError, mostrarMensaje }) {
             <span className="link__login">
               Ya tienes una cuenta? {""}
               <Link href="/accounts/login">
-                <a className="link-menu">Inicia sesión</a>
+                <a className="link-menu">Crear cuenta</a>
               </Link>
             </span>
             <br />
@@ -112,86 +112,6 @@ export default function Signup({ signup, mostrarError, mostrarMensaje }) {
           </form>
         </div>
       </div>
-      <style jsx>{`
-        .link-menu {
-          color: rgb(0, 149, 246);
-          text-decoration: underline;
-        }
-        .title__center {
-          text-align: center;
-        }
-        .ContainerLogin {
-          display: flex;
-          width: 100%;
-          align-items: center;
-        }
-        .ContainerLogin__left {
-          width: 45%;
-        }
-        .ContainerLogin__right {
-          width: 45%;
-        }
-        .ContainerLogin__right-form {
-          width: 90%;
-          margin: auto;
-          background: white;
-          padding: 10px;
-          border: 1px solid rgba(0, 0, 0, 0.09);
-          box-sizing: border-box;
-        }
-
-        .input__email {
-          display: block;
-          width: 80%;
-          margin: auto;
-          margin-bottom: 10px;
-          padding: 5px;
-          border: 1px solid rgba(0, 0, 0, 0.09);
-          background: #fafafa;
-          border-radius: 3px;
-        }
-        .input__password {
-          display: block;
-          width: 80%;
-          margin: auto;
-          padding: 5px;
-          border: 1px solid rgba(0, 0, 0, 0.09);
-          margin-bottom: 10px;
-          background: #fafafa;
-          border-radius: 3px;
-        }
-        .btn__login {
-          display: block;
-          width: 83%;
-          margin: auto;
-          padding: 5px;
-          border: 1px solid rgba(0, 0, 0, 0.09);
-          background: #0095f6;
-          border-radius: 3px;
-          color: white;
-          cursor: pointer;
-        }
-        input:focus {
-          outline: none;
-        }
-        button:focus {
-          outline: none;
-        }
-
-        .link__login {
-          display: block;
-          text-align: center;
-        }
-        @media screen and (max-width: 768px) {
-          .container__image {
-            display: none;
-          }
-          .container__form {
-            width: 100% !important;
-            margin-top: 70px;
-          }
-        }
-      `}</style>
     </Container>
   );
 }
