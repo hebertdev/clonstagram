@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Container from "../../components/container/index";
 import axiosInstance from "../../Helpers/axios";
 import { useRouter } from "next/router";
@@ -18,9 +18,20 @@ export default function Edit({
     ...usuario,
   });
 
+  useEffect(() => {
+    if (!usuario) {
+      location.href = "/";
+    } else {
+      setProfileUpdate({
+        link: usuario.profile.link,
+        bio: usuario.profile.bio,
+      });
+    }
+  }, []);
+
   const [profileUpdate, setProfileUpdate] = useState({
-    link: usuario.profile.link,
-    bio: usuario.profile.bio,
+    link: "",
+    bio: "",
   });
 
   function onFileChange(e) {
