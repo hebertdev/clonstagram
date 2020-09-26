@@ -6,6 +6,11 @@ import Link from "next/link";
 import { getToken } from "../Helpers/auth-helpers";
 import Router from "next/router";
 
+//importando los loader para el feed
+
+import LoaderFeedPosts from "../components/LoaderFeedPosts";
+import LoaderUserFeed from "../components/loaderUserFeed";
+
 async function cargarPosts() {
   const { data: Posts } = await axiosInstance.get("/posts/");
   return Posts;
@@ -14,16 +19,20 @@ async function cargarPosts() {
 export default function Home({ usuario }) {
   const [posts, setPosts] = useState([]);
   const [nextload, setNextLoad] = useState();
+  const [cargandoPosts, setCargandoPosts] = useState(true);
 
   useEffect(() => {
     async function cargarPostsIniciales() {
       try {
+        setCargandoPosts(true);
         const nuevosPosts = await cargarPosts();
         setPosts(nuevosPosts.results);
         setNextLoad(nuevosPosts.next);
+        setCargandoPosts(false);
       } catch (error) {
         console.log("Hubo un error al cargar tu feed");
         console.log(error);
+        setCargandoPosts(false);
       }
     }
     cargarPostsIniciales();
@@ -31,6 +40,7 @@ export default function Home({ usuario }) {
 
   async function CargarMasPostEnElFeed() {
     try {
+      setCargandoPosts(true);
       const { data: NuevosPostsDelFeed } = await axiosInstance.get(
         `${nextload}`
       );
@@ -39,9 +49,11 @@ export default function Home({ usuario }) {
 
       setNextLoad(NuevosPostsDelFeed.next);
 
+      setCargandoPosts(false);
       setPosts((viejosPosts) => [...viejosPosts, ...nuevosPostscargados]);
     } catch (error) {
       console.log(error);
+      setCargandoPosts(false);
     }
   }
 
@@ -58,6 +70,13 @@ export default function Home({ usuario }) {
         {posts.map((post) => (
           <Post key={post.id} post={post} usuario={usuario} />
         ))}
+
+        {cargandoPosts == true && (
+          <div>
+            <LoaderFeedPosts></LoaderFeedPosts>
+            <LoaderFeedPosts></LoaderFeedPosts>
+          </div>
+        )}
 
         {nextload && (
           <button
@@ -116,15 +135,19 @@ function ContainerRightFeed({ usuario }) {
 
 function UserSuggestion({ usuario }) {
   const [usuarios, setUsuarios] = useState([]);
+  const [cargandoUsuarios, setCargandoUsuarios] = useState(true);
 
   useEffect(() => {
     async function obtenerUsuarios() {
       try {
+        setCargandoUsuarios(true);
         const { data: usuarios } = await axiosInstance.get("users/");
         setUsuarios(usuarios.results);
+        setCargandoUsuarios(false);
       } catch (error) {
         console.log("Hubo un error al cargar tu usuarios");
         console.log(error);
+        setCargandoUsuarios(false);
       }
     }
 
@@ -133,6 +156,14 @@ function UserSuggestion({ usuario }) {
 
   return (
     <div>
+      {cargandoUsuarios == true && (
+        <div>
+          <LoaderUserFeed></LoaderUserFeed>
+          <LoaderUserFeed></LoaderUserFeed>
+          <LoaderUserFeed></LoaderUserFeed>
+        </div>
+      )}
+
       {usuarios.map((user) => (
         <li key={user.id}>
           <div style={{ display: "flex", alignItems: "center" }}>

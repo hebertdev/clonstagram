@@ -75,6 +75,12 @@ export default function User({ usuario, logout }) {
   );
 }
 
+User.getInitialProps = async (ctx) => {
+  console.log(ctx.query.username);
+
+  return <p> {ctx.query.username} </p>;
+};
+
 function ProfileSectionBio({
   userProfile,
   usuario,

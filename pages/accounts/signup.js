@@ -98,13 +98,13 @@ export default function Signup({ signup, mostrarError, mostrarMensaje }) {
             />
 
             <button type="submit" className="btn__login">
-              Iniciar Sesión
+              Crear cuenta
             </button>
             <br />
             <span className="link__login">
               Ya tienes una cuenta? {""}
               <Link href="/accounts/login">
-                <a className="link-menu">Crear cuenta</a>
+                <a className="link-menu">Iniciar Sesión</a>
               </Link>
             </span>
             <br />
