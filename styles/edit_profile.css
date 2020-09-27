@@ -6,6 +6,7 @@
   border: 1px solid #dbdbdb;
   margin: auto;
   color: #585858;
+  box-sizing: border-box;
 }
 
 .Sub__contianer_edit_profile {
