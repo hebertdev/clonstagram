@@ -11,21 +11,24 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 
 import { toggleFollow } from "../Helpers/user-helpers";
 
-export default function User(props, { usuario, logout }) {
+export default function User({ usuario, logout, match }) {
   const router = useRouter();
   const { username } = router.query;
-
-  console.log(props.user.username);
 
   const [userProfile, setUserProfile] = useState(null);
   const [cargandoPerfil, setCargandoPerfil] = useState(true);
 
   useEffect(() => {
     async function CargarPostsYUsuario() {
+      var rutaObtenida = window.location.href;
+
+      let paths = rutaObtenida.split("/");
+      let larutaes = paths[paths.length - 1];
+
       try {
         setCargandoPerfil(true);
         const { data: profile } = await axiosInstance.get(
-          `/users/${props.user.username}/`
+          `/users/${larutaes}/`
         );
 
         setUserProfile(profile);
@@ -38,7 +41,7 @@ export default function User(props, { usuario, logout }) {
     }
 
     CargarPostsYUsuario();
-  }, [props.user.username]);
+  }, [username]);
 
   async function onSubmitFollowToggle() {
     try {
@@ -56,7 +59,7 @@ export default function User(props, { usuario, logout }) {
       <div className="container-all-profile">
         {/* parte de la informacion de perfil */}
 
-        {userProfile && (
+        {usuario && userProfile && (
           <ProfileSectionBio
             userProfile={userProfile}
             usuario={usuario}
@@ -76,14 +79,6 @@ export default function User(props, { usuario, logout }) {
     </Container>
   );
 }
-
-User.getInitialProps = async (ctx) => {
-  let usernamesito = {
-    username: ctx.query.username,
-  };
-
-  return { user: usernamesito };
-};
 
 function ProfileSectionBio({
   userProfile,
