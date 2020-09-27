@@ -11,6 +11,15 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 
 import { toggleFollow } from "../Helpers/user-helpers";
 
+async function CargarProfile() {
+  var rutaObtenida = window.location.href;
+  let paths = rutaObtenida.split("/");
+  let larutaes = paths[paths.length - 1];
+
+  const { data: profile } = await axiosInstance.get(`/users/${larutaes}/`);
+  return profile;
+}
+
 export default function User({ usuario, logout, match }) {
   const router = useRouter();
   const { username } = router.query;
@@ -20,19 +29,9 @@ export default function User({ usuario, logout, match }) {
 
   useEffect(() => {
     async function CargarPostsYUsuario() {
-      var rutaObtenida = window.location.href;
-
-      let paths = rutaObtenida.split("/");
-      let larutaes = paths[paths.length - 1];
-
       try {
-        setCargandoPerfil(true);
-        const { data: profile } = await axiosInstance.get(
-          `/users/${larutaes}/`
-        );
-
+        const profile = await CargarProfile();
         setUserProfile(profile);
-        setCargandoPerfil(false);
       } catch (error) {
         console.log(error);
 
