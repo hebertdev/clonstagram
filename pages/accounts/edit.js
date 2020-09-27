@@ -49,7 +49,7 @@ export default function Edit({
         `users/${usuario.username}/profile/`,
         uploadData
       );
-      location.href = `/${usuario.username}`;
+      location.href = `/`;
     } catch (error) {
       mostrarError("Hubo un error al actualizar tus datos");
     }
@@ -79,7 +79,7 @@ export default function Edit({
     e.preventDefault();
     try {
       await edit_profile(profileUpdate);
-      location.href = `/${usuario.username}`;
+      location.href = `/`;
 
       mostrarMensaje("Biografia actualizada");
     } catch (error) {
