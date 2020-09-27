@@ -127,7 +127,8 @@
   }
 
   .postdetail__image-photo {
-    max-height: 400px;
+    max-height: 370px;
+    border: none;
   }
 
   .postdetail__comentarios {
