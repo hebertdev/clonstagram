@@ -23,6 +23,7 @@ import {
   getToken,
   setUserNow,
   GetUsername,
+  setTokenCookie,
 } from "../Helpers/auth-helpers";
 
 function MyApp({ Component, pageProps }) {
@@ -73,6 +74,7 @@ function MyApp({ Component, pageProps }) {
 
     setToken(data.access_token);
     setUserNow(data.user.username);
+    setTokenCookie(data.access_token);
   }
 
   async function signup(usuario) {

@@ -14,13 +14,17 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "axios": "^0.20.0",
+    "cookie": "^0.4.1",
+    "js-cookie": "^2.2.0",
     "next": "9.5.3",
+    "next-cookies": "^2.0.3",
     "next-pwa": "^3.1.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
+    "@types/cookie": "^0.4.0",
     "babel-plugin-styled-components": "^1.11.1"
   },
   "proxy": "https://instagramapi.pythonanywhere.com"

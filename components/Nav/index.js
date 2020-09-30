@@ -8,7 +8,7 @@ export default function Nav({ usuario, logout, OpenModalUpload }) {
     <header className="Header__principal">
       <Head>
         <meta charset="utf-8" />
-        <title>Un clon de Instagram ♥ </title>
+        <title>Clonstagram </title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"

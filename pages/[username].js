@@ -10,6 +10,8 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
 
 import { toggleFollow } from "../Helpers/user-helpers";
+import { getTokenCookie, parseCookies } from "../Helpers/auth-helpers";
+import cookies from "next-cookies";
 
 async function CargarProfile() {
   var rutaObtenida = window.location.href;
@@ -23,7 +25,6 @@ async function CargarProfile() {
 export default function User({ usuario, logout, match }) {
   const router = useRouter();
   const { username } = router.query;
-
   const [userProfile, setUserProfile] = useState(null);
   const [cargandoPerfil, setCargandoPerfil] = useState(true);
 
@@ -84,11 +85,14 @@ function ProfileSectionBio({
   usuario,
   logout,
   onSubmitFollowToggle,
+  seguidores,
 }) {
   const [isFollow, setIsFollow] = useState(false);
   const [numFollows, setNumFollow] = useState(
     userProfile.user.profile.numFollowers
   );
+  const [modalIsOpen, setModalIsOpen] = useState(true);
+
   useEffect(() => {
     const userFollow = userProfile.user.profile.followers.filter(function (
       user
@@ -111,11 +115,31 @@ function ProfileSectionBio({
     }
   }
 
+  function OpenModalFollowers() {
+    setModalIsOpen(true);
+  }
+
+  function CloseModalFollower() {
+    setModalIsOpen(false);
+  }
+
   function Logout() {
     logout();
   }
   return (
     <div className="container-info-profile">
+      {modalIsOpen == true && (
+        <>
+          {usuario && userProfile && (
+            <ModalFollowers
+              userProfile={userProfile}
+              usuario={usuario}
+              CloseModalFollower={CloseModalFollower}
+            ></ModalFollowers>
+          )}
+        </>
+      )}
+
       {usuario && userProfile && (
         <div className="container-profile-info">
           <div className="sub-container-profile-info">
@@ -170,12 +194,24 @@ function ProfileSectionBio({
               {usuario.username === userProfile.user.username ? (
                 <div>
                   {userProfile.user.profile.numFollowers}{" "}
-                  <span className="span__followers_user"> seguidores</span>
+                  <span
+                    className="span__followers_user"
+                    onClick={OpenModalFollowers}
+                  >
+                    {" "}
+                    seguidores
+                  </span>
                 </div>
               ) : (
                 <div>
                   {numFollows}{" "}
-                  <span className="span__followers_user"> seguidores</span>
+                  <span
+                    onClick={OpenModalFollowers}
+                    className="span__followers_user"
+                  >
+                    {" "}
+                    seguidores
+                  </span>
                 </div>
               )}
 
@@ -204,6 +240,61 @@ function ProfileSectionBio({
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+function ModalFollowers({ userProfile, usuario, CloseModalFollower }) {
+  let followersProfile = userProfile.user.profile.followers;
+
+  return (
+    <div className="modal_followers_profile">
+      <div className="modal_follower-container">
+        <div className="modal_header-followers">
+          <span className="title-header-follower-modal">Seguidores</span>{" "}
+          <span className="CloseModalFollower-btn" onClick={CloseModalFollower}>
+            X
+          </span>
+        </div>
+
+        {usuario && userProfile && (
+          <ul className="Container-follower-list">
+            {userProfile.user.profile.followers.map((seguidor) => (
+              <li key={seguidor.id}>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div>
+                    <span style={{ fontWeight: 600 }}>
+                      <Link href={`/${seguidor.username}`}>
+                        <a style={{ color: "#585858", textDecoration: "none" }}>
+                          {seguidor.username}
+                        </a>
+                      </Link>
+                    </span>{" "}
+                    <br />
+                    <span>
+                      <small style={{ color: "#666" }}>
+                        {" "}
+                        {seguidor.first_name} {seguidor.last_name}
+                      </small>
+                    </span>
+                  </div>
+                </div>
+                {usuario.id == seguidor.id && (
+                  <Link href="/accounts/edit">
+                    <a className="btn-seguir-users">Editar perfil</a>
+                  </Link>
+                )}
+
+                {usuario.id !== seguidor.id && (
+                  <Link href={`/${seguidor.username}`}>
+                    <a className="btn-seguir-users">Ver perfil</a>
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }

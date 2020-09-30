@@ -3,6 +3,70 @@
   padding: 0;
 }
 
+/*Modal*/
+
+.modal_followers_profile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #00000085;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_follower-container {
+  width: 350px;
+  max-height: 400px;
+  background: white;
+  border-radius: 15px;
+}
+
+.modal_header-followers {
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.title-header-follower-modal {
+  font-size: 18px;
+}
+
+.CloseModalFollower-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.Container-follower-list {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 0;
+  list-style: none;
+  padding: 10px;
+  box-sizing: border-box;
+  max-height: calc(100% - 55px);
+}
+.Container-follower-list li {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+/* fin */
+
 .header {
   height: 75px;
   width: 100%;
@@ -283,6 +347,7 @@
 
 .span__followers_user {
   margin-left: 4px;
+  cursor: pointer;
 }
 @media screen and (max-width: 768px) {
   .sub-container-profile-info {
