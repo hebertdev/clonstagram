@@ -91,7 +91,7 @@ function ProfileSectionBio({
   const [numFollows, setNumFollow] = useState(
     userProfile.user.profile.numFollowers
   );
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     const userFollow = userProfile.user.profile.followers.filter(function (
