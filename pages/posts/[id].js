@@ -29,7 +29,6 @@ export default function PostDetail({ usuario }) {
         const { data: post } = await axiosInstance.get(`/posts/${id}/`);
         setPost(post.post);
         setComentarios(post.comments);
-        console.log(post.post);
       } catch (error) {
         if (
           error.response &&
