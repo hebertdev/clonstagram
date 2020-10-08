@@ -2,8 +2,11 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import { deleteToken } from "../../Helpers/auth-helpers";
+import { useRouter } from "next/router";
 
 export default function Nav({ usuario, logout, OpenModalUpload }) {
+  const router = useRouter();
+
   return (
     <header className="Header__principal">
       <Head>
@@ -46,6 +49,8 @@ export default function Nav({ usuario, logout, OpenModalUpload }) {
 }
 
 function NavLinkUser({ usuario, OpenModalUpload }) {
+  const router = useRouter();
+
   return (
     <div className="Header__navigation-link">
       <a
@@ -57,9 +62,20 @@ function NavLinkUser({ usuario, OpenModalUpload }) {
       <a className="Header__navigation-link-icons">
         <img src="../imagenes/direct-regular.png" alt="" />
       </a>
-      <a className="Header__navigation-link-icons iconos__hiden-mobil">
-        <img src="../imagenes/explore-regular.png" alt="" />
-      </a>
+      {router.pathname === "/accounts/explore" ? (
+        <Link href="/accounts/explore">
+          <a className="Header__navigation-link-icons iconos__hiden-mobil">
+            <img src="../imagenes/explore-solid.png" alt="" />
+          </a>
+        </Link>
+      ) : (
+        <Link href="/accounts/explore">
+          <a className="Header__navigation-link-icons iconos__hiden-mobil">
+            <img src="../imagenes/explore-regular.png" alt="" />
+          </a>
+        </Link>
+      )}
+
       <Link href={`/${usuario.username}`}>
         <a className="Header__navigation-link-icons iconos__hiden-mobil">
           <div className="Header__navigation-image-user">

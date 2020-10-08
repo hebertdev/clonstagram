@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { getToken } from "./auth-helpers";
 
-const baseURL = "https://instagramapi.pythonanywhere.com";
+const baseURL = "https://apinstaram.pythonanywhere.com";
 
 let headers = {};
 
@@ -29,7 +29,7 @@ const axiosInstance = Axios.create({
 export default axiosInstance;
 
 export function exportBASEurl() {
-  const baseURL = "https://instagramapi.pythonanywhere.com";
+  const baseURL = "https://apinstaram.pythonanywhere.com";
 
   return baseURL;
 }

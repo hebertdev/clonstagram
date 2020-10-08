@@ -13,6 +13,8 @@ import { toggleFollow } from "../Helpers/user-helpers";
 import { getTokenCookie, parseCookies } from "../Helpers/auth-helpers";
 import cookies from "next-cookies";
 
+import LoaderGeneral from "../components/LoaderGeneral";
+
 async function CargarProfile() {
   var rutaObtenida = window.location.href;
   let paths = rutaObtenida.split("/");
@@ -33,6 +35,7 @@ export default function User({ usuario, logout, match }) {
       try {
         const profile = await CargarProfile();
         setUserProfile(profile);
+        setCargandoPerfil(false);
       } catch (error) {
         console.log(error);
 
@@ -56,6 +59,8 @@ export default function User({ usuario, logout, match }) {
 
   return (
     <Container>
+      {cargandoPerfil == true && <LoaderGeneral></LoaderGeneral>}
+
       <div className="container-all-profile">
         {/* parte de la informacion de perfil */}
 

@@ -22,9 +22,20 @@ export default function FooterNavigation({ usuario, OpenModalUpload }) {
           </Link>
         )}
 
-        <a>
-          <img src="../imagenes/search-regular.png" alt="" />
-        </a>
+        {router.pathname === "/accounts/explore" ? (
+          <Link href="/accounts/explore">
+            <a>
+              <img src="../imagenes/search-solid.png" alt="" />
+            </a>
+          </Link>
+        ) : (
+          <Link href="/accounts/explore">
+            <a>
+              <img src="../imagenes/search-regular.png" alt="" />
+            </a>
+          </Link>
+        )}
+
         <a onClick={OpenModalUpload}>
           <img src="../imagenes/add-regular.png" alt="" />
         </a>
