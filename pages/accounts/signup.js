@@ -14,6 +14,8 @@ export default function Signup({ signup, mostrarError, mostrarMensaje }) {
     password_confirmation: "",
   });
 
+  const [errores, setErrores] = useState([]);
+
   function handleInputChange(e) {
     setUsuario({ ...usuario, [e.target.name]: e.target.value });
   }
@@ -26,13 +28,28 @@ export default function Signup({ signup, mostrarError, mostrarMensaje }) {
       Router.push("/accounts/login");
       mostrarMensaje("Registro completado. Ya puedes Iniciar sesión");
     } catch (error) {
-      mostrarError("Hubo un error al registrarse. Verifica tus datos.");
       console.log(error.response.data);
+      setErrores(error.response.data);
+      console.log(errores);
     }
   }
 
   return (
     <Container>
+      {errores && (
+        <div
+          style={{
+            background: "#dc3545",
+            color: "white",
+            padding: "3px",
+            borderRadius: "5px",
+          }}
+        >
+          {errores && (
+            <div>{JSON.stringify(errores)} "-----la flojera xd."</div>
+          )}
+        </div>
+      )}
       <div className="ContainerLogin">
         <div className="ContainerLogin__left">
           <img src="../../imagenes/login_image.png" alt="" />

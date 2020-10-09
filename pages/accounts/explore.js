@@ -77,7 +77,7 @@ function Users({ usuarios }) {
     <div className="container-all-post">
       <section className="listPost">
         {usuarios.map((usuario) => (
-          <Link key={usuario.id} href="/">
+          <Link key={usuario.id} href={`/${usuario.username}`}>
             <a className="post">
               <div className="post-image">
                 {usuario.profile.avatar ? (
