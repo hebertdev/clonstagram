@@ -67,6 +67,20 @@ button:focus {
   display: block;
   text-align: center;
 }
+
+.error__input {
+  display: block;
+  width: 80%;
+  margin: auto;
+  color: red;
+  padding: 5px 0;
+}
+
+.input_error {
+  border: 1px solid red;
+  color: red;
+}
+
 @media screen and (max-width: 768px) {
   .container__image {
     display: none;
