@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+}
+/*https://picsum.photos/600?random=2*/
+
+.Container__feed {
+  max-width: 950px;
+  width: 100%;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.Contianer__feed-posts {
+  max-width: 615px;
+  width: 615px;
+}
+
+.Contianer__feed-right {
+  height: 500px;
+  min-width: 320px;
+}
+
+.Contianer__feed-right-user {
+  width: 95%;
+  margin: auto;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.Contianer__feed-right-user-picture {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.Contianer__feed-right-user-picture img {
+  width: 100%;
+}
+
+.Contianer__feed-right-ul-users {
+  padding: 0;
+  list-style: none;
+}
+
+.Contianer__feed-right-ul-users li {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.Contianer__feed-right-user-picture-li {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-right: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+}
+.Contianer__feed-right-user-picture-li img {
+  width: 100%;
+}
+
+.btn-seguir-users {
+  border: none;
+  color: #0095f6;
+  background: none;
+  cursor: pointer;
+}
+
+.Container__feed-footer-navigation {
+  display: none;
+}
+
+.btn__feed-cargarmasposts {
+  display: block;
+  width: 150px;
+  margin: auto;
+  background: #0095f6;
+  border: 1px solid #0095f6;
+  color: white;
+  padding: 7px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .Contianer__feed-right {
+    display: none;
+  }
+  .Post__feed-picture {
+    min-height: 200px !important;
+  }
+
+  .Container__feed-footer-navigation {
+    display: flex;
+  }
+}

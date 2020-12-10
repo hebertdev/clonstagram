@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+}
+
+.container__page404 {
+  max-width: 950px;
+  margin: auto;
+  width: 95%;
+  text-align: center;
+}
+
+.title__404 {
+  margin: 30px 0;
+}
+
+.link__404 {
+  background: #0095f6;
+  padding: 9px;
+  display: block;
+  width: 180px;
+  margin: 6px auto;
+  border-radius: 2px;
+  text-decoration: none;
+  color: white;
+}

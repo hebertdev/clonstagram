@@ -1,0 +1,127 @@
+a {
+  text-decoration: none;
+}
+.Post__feed {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #dbdbdb;
+  background: white;
+}
+
+.Post__feed-header {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #dbdbdb;
+  display: flex;
+  align-items: center;
+}
+
+.Post__feed-header-link-user {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: arial;
+  color: #585858;
+}
+.Post__feed-header-picture {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.Post__feed-header-picture img {
+  width: 100%;
+}
+
+.Post__feed-picture {
+  width: 100%;
+  max-height: 580px;
+  min-height: 300px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.Post__feed-picture img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.Post__feed-footer {
+  width: 100%;
+}
+
+.Post__feed-footer-icons {
+  width: 98%;
+  margin: auto;
+  font-family: arial;
+  color: #585858;
+  margin-bottom: 4px;
+}
+
+.Post__feed-footer-button-like {
+  border: none;
+  margin: 5px;
+  background: none;
+}
+
+.Post__feed-footer-button-like:focus {
+  outline: none;
+}
+
+.Post__feed-footer-link-comment img {
+  width: 22px;
+  height: 22px;
+}
+.Post__feed-footer-text-like {
+  margin: 0 5px;
+  font-weight: 600;
+  color: #585858;
+}
+
+.Post__feed-footer-comments-ul {
+  width: 98%;
+  margin: auto;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.txt-comment {
+  color: #666;
+}
+
+.Post__feed-footer-form {
+  width: 100%;
+  border-top: 1px solid #dbdbdb;
+}
+
+.Post__feed-footer-form input {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  padding: 10px 8px;
+}
+
+.Post__feed-footer-form input:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 600px) {
+  .Post__feed {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #dbdbdb;
+    margin-bottom: 20px;
+    border-top: 1px solid #dbdbdb;
+  }
+}
