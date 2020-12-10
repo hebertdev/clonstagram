@@ -74,7 +74,7 @@ export default function Signup({ signup, mostrarAlerta, history }) {
               required
               name="email"
               onChange={handleInputChange}
-              value={usuario.email}
+              value={newUser.email}
             />
 
             {usernameError && (
@@ -89,7 +89,7 @@ export default function Signup({ signup, mostrarAlerta, history }) {
               required
               name="username"
               onChange={handleInputChange}
-              value={usuario.username}
+              value={newUser.username}
             />
 
             {nameError && <small className="error__input"> {nameError} </small>}
@@ -102,7 +102,7 @@ export default function Signup({ signup, mostrarAlerta, history }) {
               required
               name="first_name"
               onChange={handleInputChange}
-              value={usuario.first_name}
+              value={newUser.first_name}
             />
 
             {lastnameError && (
@@ -117,7 +117,7 @@ export default function Signup({ signup, mostrarAlerta, history }) {
               required
               name="last_name"
               onChange={handleInputChange}
-              value={usuario.last_name}
+              value={newUser.last_name}
             />
 
             {passwordError && (
@@ -132,7 +132,7 @@ export default function Signup({ signup, mostrarAlerta, history }) {
               required
               name="password"
               onChange={handleInputChange}
-              value={usuario.password}
+              value={newUser.password}
             />
 
             {passwordConfError && (
@@ -152,7 +152,7 @@ export default function Signup({ signup, mostrarAlerta, history }) {
               required
               name="password_confirmation"
               onChange={handleInputChange}
-              value={usuario.password_confirmation}
+              value={newUser.password_confirmation}
             />
 
             <button type="submit" className="btn__login">
