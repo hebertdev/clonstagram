@@ -39,7 +39,6 @@ export default function Signup({ signup, mostrarAlerta, history }) {
       mostrarAlerta("Cuenta creada , ya puede iniciar sesión", false);
       history.push("/accounts/login");
     } catch (error) {
-      console.log(error.response.data);
       mostrarAlerta("Hubo un problema al registrarse intente de nuevo.", true);
       console.log(error.response.data.email);
       setEmailError(error.response.data.email);

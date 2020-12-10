@@ -28,7 +28,7 @@ export default function Feed({ usuario }) {
       try {
         setLoadingPost(true);
         const { data } = await axiosInstance.get("/posts/");
-        console.log(data);
+
         setPosts(data.results);
         setNextPage(data.next);
         setLoadingPost(false);

@@ -17,6 +17,7 @@ import axiosInstance, { axiosInterceptors, url } from "./Helpers/axios";
 
 //componentes
 import Header from "./Components/Header";
+import NavFooter from "./Components/NavFooter";
 import Alerta from "./Components/Alerta";
 
 //componente - portal
@@ -86,6 +87,7 @@ export default function App() {
   function logout() {
     deleteToken();
     setUsuario(null);
+    window.location.href = "/";
   }
 
   //manejo de actualizaciones del usuario
@@ -153,6 +155,8 @@ export default function App() {
           mostrarAlerta={mostrarAlerta}
         />
       )}
+
+      {getUsername() && <NavFooter usuario={usuario} openModal={openModal} />}
     </BrowserRouter>
   );
 }
