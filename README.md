@@ -28,3 +28,6 @@ $ npm run build
 
 ![](https://raw.githubusercontent.com/hebertdev1/hebertdev1/master/img/clonstagram_profile_min.png)
 
+# [APRENDE A CREAR ESTA APLICACIÓN EN HEBERTDEV.LIVE ](https://www.hebertdev.live/plataforma/taller-de-reactjs)
+
+
