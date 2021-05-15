@@ -30,4 +30,8 @@ $ npm run build
 
 # [APRENDE A CREAR ESTA APLICACIÓN EN HEBERTDEV.LIVE ](https://www.hebertdev.live/plataforma/taller-de-reactjs)
 
+o
+
+## https://www.youtube.com/playlist?list=PLo-JHwqVafao7-3sb9VnJ1gmDv6MRovuX
+
 
