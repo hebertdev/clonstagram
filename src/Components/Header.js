@@ -7,7 +7,6 @@ import "./Header.css";
 
 //Iconos header
 
-import LogoInstagram from "../Images/iconos/logo_image.png";
 import CameraRegular from "../Images/iconos/camera-regular.png";
 import DirectRegular from "../Images/iconos/direct-regular.png";
 import ExploreRegular from "../Images/iconos/explore-regular.png";
@@ -21,7 +20,15 @@ export default function Header({ usuario, openModal }) {
       <header className="Header__principal">
         <nav className="Header__max-navigation">
           <Link to="/">
-            <img src={LogoInstagram} alt="" className="Header__image-logo" />
+            <p
+              style={{
+                fontWeight: "600",
+                color: "black",
+                fontSize: "20px",
+              }}
+            >
+              Clonstagram
+            </p>
           </Link>
 
           {usuario && <NavUser usuario={usuario} openModal={openModal} />}
